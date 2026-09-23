@@ -1,13 +1,30 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-  // to see how IntelliJ IDEA suggests fixing it.
-  IO.println(String.format("Hello and welcome!"));
+void main()
+{
+    try (BufferedReader br = new BufferedReader(new FileReader("22 (1).txt")))
+    {
+        String line;
+        int N = 100;
+        int[] IdProc = new int[N];
+        int[] TimeProc = new int[N];
+        String[] BeforeProc = new String[N];
+        for(int i = 0; i < N; i++)
+        {
+            line = br.readLine();
+            IdProc[i] = Integer.parseInt(line.split("\t")[0]);
+            TimeProc[i] = Integer.parseInt(line.split("\t")[1]);
+            BeforeProc[i] = line.split("\t")[2].replaceAll("\"", "");
 
-  for (int i = 1; i <= 5; i++) {
-    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-    IO.println("i = " + i);
-  }
+            IO.print(IdProc[i]);
+            IO.print(" ");
+            IO.print(TimeProc[i]);
+            IO.print(" ");
+            IO.println(BeforeProc[i]);
+        }
+    }
+    catch (Exception e)
+    {
+        throw new RuntimeException(e);
+    }
 }
